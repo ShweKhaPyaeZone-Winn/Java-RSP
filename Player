@@ -1,0 +1,26 @@
+package RPS;
+
+public class Player {
+    private static int PlayerHp=100;
+    private String Name;
+
+    public Player(String inputName){
+        this.Name = inputName;
+    }
+
+    public int getPlayerHp(){
+        return this.PlayerHp;
+    }
+
+    public String getName(){
+        return this.Name;
+    }
+
+    public static int lose(){
+        return PlayerHp-=30;
+    }
+
+    public static int draw(){
+        return PlayerHp+=10;
+    }
+}
