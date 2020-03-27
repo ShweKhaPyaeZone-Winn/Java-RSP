@@ -1,0 +1,20 @@
+package RPS;
+
+public class Computer {
+    private static int ComputerHp = 100;
+
+    public int function(){
+        return ComputerHp;
+    }
+
+    public static int lose() {
+       return ComputerHp -= 30;
+    }
+    public int getComputerHp(){
+        return this.ComputerHp;
+    }
+    public static int draw(){
+        return ComputerHp+=10;
+    }
+
+}
