@@ -1,0 +1,83 @@
+package RPS;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int round = 1;
+        System.out.println(" Welcome from Game...");
+        System.out.println("Please enter your name...");
+        String a = sc.nextLine();
+        System.out.println("User Name => " + a);
+
+        Player p = new Player(a);
+        Computer pc = new Computer();
+        Random R = new Random();
+
+        while (p.getPlayerHp() > 0 && pc.getComputerHp() > 0) {
+            int Computer = R.nextInt(3) + 1;
+            System.out.println("Welcome " + a + "!" + " Let's start" + round + "round.");
+            System.out.println("Player 1:Choose (1)-Rock,(2)-Paper,(3)-Scissor");
+            int Player = sc.nextInt();
+
+            System.out.println("Compare your value with Computer...");
+            compareResult(Player, Computer);
+            System.out.println("Computer choose - ");
+            pcRandom(Computer);
+
+            round++;
+            if (p.getPlayerHp() < 0) {
+                System.out.println("You lose the Game => Total round Complete(" + round + " round)");
+            } else if (pc.getComputerHp() < 0) {
+                System.out.println("You win the Game => Total round Complete(" + round + " round)");
+
+            } else {
+                System.out.println("Your Hp - " + p.getPlayerHp());
+                System.out.println("Computer Hp - " + pc.getComputerHp());
+            }
+        }
+    }
+            public static void compareResult(int Player, int Computer){
+                if (Player == 1 && Computer == 3) {
+                    RPS.Computer.lose();
+                    System.out.println("You win!");
+                } else if (Player == 1 && Computer == 2) {
+                    RPS.Player.lose();
+                    System.out.println("Computer win!");
+                } else if (Player == 2 && Computer == 1) {
+                    RPS.Computer.lose();
+                    System.out.println("Player win!");
+                } else if (Player == 2 && Computer == 3) {
+                    RPS.Player.lose();
+                    System.out.println("Computer win!");
+                } else if (Player == 3 && Computer == 2) {
+                    RPS.Computer.lose();
+                    System.out.println("Computer win!");
+                } else if (Player == 3 && Computer == 1) {
+                    RPS.Player.lose();
+                    System.out.println("You win!");
+                } else {
+                    System.out.println("Draw");
+                    RPS.Player.draw();
+                    RPS.Computer.draw();
+                }
+            }
+
+            public static void pcRandom(int R){
+                switch (R) {
+                    case 1:
+                        System.out.println("Rock");
+                        break;
+                    case 2:
+                        System.out.println("Paper");
+                        break;
+                    case 3:
+                        System.out.println("Scissor");
+                        break;
+
+                }
+            }
+
+}
